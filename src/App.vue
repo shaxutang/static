@@ -1,9 +1,10 @@
 <script setup lang="ts">
-const images = import.meta.glob<{ default: string }>("./images/**", {
+const images = import.meta.glob<string>("./images/**", {
   eager: true,
+  as: "url",
 });
 
-const imgs = Object.values(images).map((img) => img.default);
+const imgs = Object.values(images).map((img) => img);
 
 function onCopy(img: string) {
   navigator.clipboard.writeText(`${location.origin}${img}`);
